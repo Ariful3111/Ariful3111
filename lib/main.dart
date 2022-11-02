@@ -5,6 +5,8 @@ import 'package:e_bazar/account_screen.dart';
 import 'package:e_bazar/bottom_nav_controller.dart';
 import 'package:e_bazar/chat_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'bottom_nav_controller.dart';
 import 'home_screen.dart';
 import 'my_add_screen.dart';
@@ -13,7 +15,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:e_bazar/language.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+
+  Box box = await Hive.openBox('add-list');
   runApp(const MyApp());
 }
 
@@ -78,7 +84,7 @@ class MyApp extends StatelessWidget {
         '/Register-screen':(register)=>Register_Screen(),
         '/Account-screen':(register)=>Account_Screen(),
         '/Animate-screen':(register)=>Animate(),
-
+        '/add-screen':(textfilled)=>Add_Screen()
       },
       initialRoute: '/bottom-navigation-screen',
     );

@@ -2,7 +2,7 @@
     package="E_Bazar.com.e_bazar">
    <application
         android:label="e_bazar"
-        android:name="${project}"
+        android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
